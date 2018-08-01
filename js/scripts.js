@@ -145,8 +145,7 @@ function InitContract(contract) {
                 var uid = i;
                 (function(uid) {
                     ContractInstance.getUser.call(i, (error, result) => {
-                        console.log(result);
-                        console.log("users####");
+
                         user = $(".template #user").clone().addClass("user-" + uid)
                         user.find(".name").html(result[0]);
                         user.find(".uid").html(uid);
@@ -203,8 +202,11 @@ function Adduser(uname, uaddress) {
 function Dispute(fid, amount, uid) {
     ContractInstance.DisputeFine(fid, { from: web3.eth.coinbase }, (error, result) => {
         if (!error) {
-
-            getJarBalance()
+            setTimeout((function(uid) {
+                getJarBalance()
+                UpdateUserInfo(uid);
+                getFinesList();
+            })(uid), 1000);
             if (UserCount > 2) {
                 $("#number-needed").text(Math.round(UserCount / 2))
                 $(".dispute-notice").fadeIn();
@@ -220,9 +222,7 @@ function Dispute(fid, amount, uid) {
 function FineUser(uid, amount) {
     ContractInstance.FineUser(uid, amount, { from: web3.eth.coinbase }, (error, result) => {
         if (!error) {
-            console.log(result)
             updateFineBalances(amount, uid);
-
         } else
             console.log(error);
 
@@ -300,8 +300,8 @@ function getBankBalance() {
     //Get Bank Balance
     ContractInstance.bankBalance.call((error, result) => {
         if (!error) {
-            console.log(result.c[0]);
-            $("#bankBalance").html(result.c[0])
+
+            $("#bankBalance").html(result.toNumber())
         }
     });
 }
@@ -310,7 +310,7 @@ function getLoggedUser() {
     loggedUserAddress = web3.eth.coinbase;
     ContractInstance.getUserByAddress.call(web3.eth.coinbase, (error, result) => {
         if (!error) {
-            console.log(result);
+
             $(".top-user-welcome #name ").text(result[0])
             loggeduser = result[1].c[0]
                 ///$("#jarBalance").html(result.c[0])
@@ -322,14 +322,14 @@ function getLoggedUser() {
 function getFinesList() {
     ContractInstance.getNoOfFines.call((error, result) => {
         if (!error) {
-            console.log(result.c[0]);
+
             $(".fines-table tbody").html("");
             for (i = 0; i < result.c[0]; i++) {
                 var fid = i;
 
                 (function(fid) {
                     ContractInstance.Fines.call(i, (error, result) => {
-                        console.log(result);
+
                         var table = '<tr class="fines-list">';
 
                         table += '<td class="uid">' + result[0].c[0] + '</td>';
@@ -358,14 +358,13 @@ function getFinesList() {
 function getWithdrawalList() {
     ContractInstance.getNoOfwithdrawals.call((error, result) => {
         if (!error) {
-            console.log(result.c[0]);
             $(".withdrawal-table tbody").html("");
 
             for (i = 0; i < result.c[0]; i++) {
                 var wid = i;
                 (function(wid) {
                     ContractInstance.Withdrawals.call(i, (error, result) => {
-                        console.log(result);
+
                         var table = '<tr>';
 
                         table += '<td >' + result[0].c + '</td>';
@@ -401,10 +400,19 @@ function updateFineBalances(amount, uid = -1) {
     $("#owns").html(parseInt($("#owns").html()) + amount)
     $("#jarBalance").html(parseInt($("#jarBalance").html()) + amount)
     $(".user-" + uid + " .user-balance").html(parseInt($(".user-" + uid + " .user-balance").html()) + amount)
-    getFinesList();
+    setTimeout(getFinesList(), 1000);
 }
 
 function UpdateBankBalance(amount) {
     amount = parseInt(amount);
     $("#bankBalance").html(parseInt($("#bankBalance").html()) + amount)
+}
+
+function UpdateUserInfo(uid) {
+    ContractInstance.getUser.call(uid, (error, result) => {
+        user = $(".user-" + uid);
+        user.find(".name").html(result[0]);
+        user.find(".uid").html(uid);
+        user.find(".user-balance").html(result[2].toNumber());
+    });
 }

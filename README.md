@@ -5,5 +5,6 @@ View web version [Here](http://crownemmanuel.github.io/cryptojar).
 clone this repo
 start the server by
 ```
+npm install
 npm run dev
 ``` 
