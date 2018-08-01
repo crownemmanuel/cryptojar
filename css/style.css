@@ -1,0 +1,602 @@
+.template {
+    display: none;
+}
+
+.container {
+    display: none;
+}
+
+
+/* scene wrapper */
+
+.welome-info {
+    height: 80px;
+    color: white;
+    font-size: 15px;
+}
+
+.wrapper {
+    height: 200px;
+    margin-top: 50px;
+    position: relative;
+    perspective: 800;
+    perspective-origin: 50% 100px;
+    transform: scale(0.4);
+}
+
+.dark-background {
+    background: #2b3a49;
+}
+
+.welcome-logo {
+    font-size: 50px;
+    font-weight: bold;
+    color: wheat;
+    margin-bottom: 50px;
+}
+
+.welcome-logo-img {
+    max-width: 130px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+#owns {
+    display: inline;
+}
+
+#page1 {
+    padding: 10%;
+    text-align: center;
+}
+
+#page2 {
+    display: none;
+}
+
+.btn-wel {
+    display: inline !important;
+    padding: 10px;
+    margin-left: 40px;
+    padding: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 80px;
+    background: #5fb3dd;
+    color: white;
+    cursor: pointer;
+}
+
+.deploy {
+    background: #00A1A7;
+}
+
+.connect {
+    background: #8a6c9c;
+}
+
+.fine-value {
+    width: 200px;
+    margin: auto;
+    font-size: 30px;
+    text-align: center;
+}
+
+.fine-nav {
+    margin-top: 30px;
+}
+
+.user-info {
+    font-size: 24px;
+    padding-top: 15px;
+    color: #8a6c9c;
+    font-weight: bold;
+}
+
+.owns-nav {
+    background: #8a6c9c;
+    border-radius: 22px;
+    text-align: center;
+    color: #FFF;
+    box-shadow: 2px 2px 4px #CCC;
+    width: 170px;
+}
+
+.pay-modal {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #8a6c9c;
+}
+
+#fine-user-btn {
+    padding: 15px;
+    background: #5CB2DF;
+    border: none;
+}
+
+.top-user-welcome {
+    float: right;
+    font-weight: normal;
+}
+
+.header {
+    color: white;
+}
+
+.btn-primary {
+    background: #8a6c9c;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #8a6c9c;
+    border: none;
+}
+
+.btn-secondary {
+    background: #00A1A7;
+    color: white;
+    border: none;
+}
+
+#modal-withdraw-funds {
+    margin-bottom: 20px;
+}
+
+#withdraw-btn {
+    margin: 20px;
+    padding: 10px 40px;
+    margin-left: 0;
+}
+
+#continue-btn {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.modal-body {
+    padding: 40px;
+}
+
+.modal-header {
+    border-bottom: 5px solid wheat;
+    background: #8a6c9c;
+    color: white;
+}
+
+.avatars img {
+    max-width: 130px;
+}
+
+.avatars {
+    text-align: center
+}
+
+.avatars .col-md-2 {
+    margin: auto;
+}
+
+.top-r {
+    margin: auto;
+    width: 290px;
+    text-align: center;
+}
+
+.popover-content span {
+    display: block !important;
+}
+
+.left-menu {
+    background: #2A3A4A;
+    min-height: 800px;
+}
+
+.top-nav {
+    background: #f8f8f8;
+    padding: 20px;
+    box-shadow: 2px 2px 10px #CCC;
+}
+
+.top-nav .menu-wrapper {
+    text-align: right;
+}
+
+.top-nav .menu-wrapper .btn {
+    background: #FFF;
+    color: #337ab7;
+}
+
+.broken .top {
+    background-image: url("assets/images/hacked.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    text-indent: -99999px;
+}
+
+.broken:after {
+    content: "";
+    background: url("assets/images/broken_link.png") no-repeat;
+    height: 37px;
+    width: 30px;
+    position: relative;
+    z-index: 99;
+    background-size: contain;
+    left: 155px;
+    top: -143px;
+    display: block;
+}
+
+
+/*Buttons */
+
+#add-block {
+    background-color: #E0BF3D;
+    border-color: #bc9600;
+    display: block;
+    color: #FFF;
+    margin-top: 30px;
+}
+
+#add-transaction {
+    background: url("assets/images/add_transaction.png") no-repeat;
+    background-size: contain;
+    height: 48px;
+    width: 180px;
+    margin: 20px 0;
+}
+
+#proof-of-work {
+    background: url("assets/images/proof_of_work.png") no-repeat;
+    background-size: contain;
+    height: 60px;
+    width: 180px;
+    margin: 10px 0;
+}
+
+#miners {
+    background: url("assets/images/miners.png") no-repeat;
+    background-size: contain;
+    height: 65px;
+    width: 180px;
+    margin: 10px 0;
+}
+
+.info {
+    color: #2A3A4A;
+    font-size: 12px;
+}
+
+.popover[class*=tour-] {
+    z-index: 1000;
+}
+
+.modal {
+    z-index: 1100;
+}
+
+#modal-container-welcome .modal-body {
+    text-align: center;
+    color: #939393;
+}
+
+.top-container {
+    margin-bottom: 20px;
+}
+
+.logo-large {
+    background: url("assets/images/logo_large.png") no-repeat;
+    height: 125px;
+    background-size: contain;
+    margin: auto;
+    width: 200px;
+}
+
+.wel-watch {
+    background: url("assets/images/watch.png") no-repeat;
+    height: 100px;
+    background-size: contain;
+    width: 200px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.wel-learn {
+    background: url("assets/images/tutorial.png") no-repeat;
+    height: 100px;
+    background-size: contain;
+    width: 120px;
+    margin: auto;
+    margin-top: 7px;
+    cursor: pointer;
+}
+
+#video {
+    display: none;
+    margin-left: -25px;
+}
+
+.block-data {
+    background: #f7f7f7;
+    padding: 10px 15px;
+    border-top: solid #CCC 2px;
+    box-shadow: 2px 2px 2px #CCC;
+    margin-top: 10px;
+}
+
+.miners {
+    background: #f8f8f8;
+    height: 550px;
+    color: #f7f7f7;
+    position: absolute;
+    left: 17%;
+    top: 330px;
+    display: none;
+}
+
+#undefined,
+#difficulty-0 {
+    display: none !important;
+}
+
+.btn-mobileMining {
+    color: #2A3A4A;
+    text-align: right;
+    font-size: 15px;
+    padding-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.template2 {
+    float: left;
+}
+
+#my-canvas {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+}
+
+.sparks {
+    background: url(sparks.gif);
+    background-size: cover;
+    width: 144px;
+    text-indent: -999px;
+    height: 190px;
+    margin-top: -195px;
+    margin-left: 65px;
+    z-index: 9999999;
+    position: relative;
+    display: none;
+}
+
+.header {
+    background: #2A3A4A;
+    padding: 10px;
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sub-header {
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
+    background: #5CB2DF;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.logo {
+    width: 150px;
+}
+
+.building img {
+    height: 120px;
+}
+
+.account-text {
+    color: #8a6c9c;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.wb {
+    color: #00A1A7;
+}
+
+.small-btn {
+    border: none;
+    border-radius: 15px;
+    padding: 4px 20px;
+    margin-top: -10px;
+    background: #00A1A7;
+    box-shadow: 1px 1px 2px #000;
+    color: white;
+    font-weight: bold;
+}
+
+.small-btn:hover {
+    color: white;
+}
+
+.building-img {
+    height: 150px !important;
+}
+
+#wbBalance {
+    color: #00A1A7;
+}
+
+.Balance {
+    font-size: 50px;
+    margin-top: -15px;
+}
+
+#number-needed {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.action-btn {
+    border-radius: 10px;
+    padding: 2px 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px #CCC;
+}
+
+.add-user {
+    float: right;
+    margin-top: 0px;
+    margin-right: 10px;
+}
+
+.fine-val-label {
+    padding-top: 5px;
+    font-size: 30px;
+}
+
+.no-blockchain {
+    font-size: 20px;
+    color: wheat;
+    text-align: center;
+}
+
+.no-blockchain a {
+    color: white;
+}
+
+.brown-btn {
+    background: #f3cc89;
+    box-shadow: 1px 1px 2px #000;
+    color: #957b48;
+}
+
+.bank-btn {
+    color: white;
+    font-weight: bold;
+    background: #8a6c9c;
+}
+
+.name {
+    font-size: 20px;
+    color: #777777;
+    font-weight: bold;
+}
+
+.animate {
+    height: 250px;
+    width: 250px;
+    margin: 0 auto;
+    animation-name: stretch;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+}
+
+@keyframes stretch {
+    0% {
+        transform: scale(.3);
+        border-radius: 100%;
+    }
+    50% {}
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+.form-control-wallet {
+    margin: auto;
+    width: 80%;
+    margin-top: 40px;
+}
+
+.unit {
+    display: inline-block;
+}
+
+#from {
+    background: #00A1A7;
+    color: #FFF;
+}
+
+#to {
+    background: #69075A;
+    color: #FFF;
+    width: 100%;
+    display: inline-block;
+}
+
+#pointer {
+    position: relative;
+    z-index: 999;
+    height: 20px;
+    width: 20px;
+    left: 90px;
+    top: 70px;
+}
+
+#walletName {
+    padding-left: 10px;
+    font-weight: bold;
+    color: #00A1A7;
+}
+
+#wbA {
+    display: none;
+}
+
+.wide-modal {
+    max-width: 760px;
+}
+
+table {
+    box-shadow: 0px 0px 10px #CCC;
+    width: 100%;
+}
+
+table,
+table td,
+table tr {
+    text-align: center;
+}
+
+table td {
+    padding: 6px 7px;
+    font-size: 15px;
+}
+
+table thead {
+    background: #2A3A4A;
+    color: white;
+}
+
+.user-balance {
+    position: relative;
+    top: -40px;
+    left: -30px;
+    background: #8a6c9c;
+    border-radius: 80px;
+    display: inline;
+    padding: 6px;
+    color: white;
+}
+
+.user-btn:hover {
+    text-decoration: none;
+}
+
+.avatars .name {
+    font-size: 20px;
+    margin-left: -40px;
+}

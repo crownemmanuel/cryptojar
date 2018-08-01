@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CryptorJar</title>
+
+    <meta name="description" content=" A blockchain powered swear jar to for facilitating fines between two or more people">
+    <meta name="author" content="Emmanuel Crown">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row dark-background " id="page1">
+            <div class="col-md-12">
+                <img class="welcome-logo-img" src="images/money-box.png">
+                <div class="welcome-logo"> CryptoJar</div>
+            </div>
+
+            <div class="col-md-12 connect-nav hidden">
+                <div class="welome-info">
+                    A blockchain powered swear jar for facilitating fines between two or more people
+                </div>
+                <a id="modal-227670" href="#modal-container-227670" role="button" class="btn btn-wel deploy" data-toggle="modal">Deploy New Swear Jar</a>
+                <a id="modal-227671" href="#modal-container-227671" role="button" class="btn btn-wel connect" data-toggle="modal">Connect to a Swear Jar</a>
+
+            </div>
+            <div class=" no-blockchain col-md-12 hidden">
+                No Blockchain detected please use a browser plugin such as <a href="https://metamask.io/">metamask</a> to connect to one
+            </div>
+
+
+            <div class="modal fade" id="modal-container-227670" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">
+                                Deploy new Jar
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">×</span>
+							</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="deploy-form">
+                                <label for="caddress">
+                                       Your Full Name
+                                     </label>
+                                <input type="text" class="form-control" id="fname" />
+                                <label for="caddress">
+                                    how much is each fine worth in eithers
+                                 </label>
+
+                                <input type="number" class="form-control fine-value" step="0.001" value="0.003" min="0" id="fine-value" />
+                                <div class="fine-val-label">Eithers ($
+                                    <span id="dol-val">0</span>)
+                                </div>
+                            </div>
+                            <div class="loading hidden">
+                                Deploying Contract please wait...
+                            </div>
+                            <div class="deploy-done hidden">
+                                Your new swear jar has been deployed its address is
+                                <div id="contractAddress" class="alert alert-success">Error Loading Address</div>
+                                store this safely as this is what you would use to connect to this at a later time.
+                                <button type="button" class="btn btn-primary" id="continue-btn">
+                                            Continue
+                                        </button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary" id="deploy-btn">
+								Deploy
+							</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+								Close
+							</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--CONNECT TO CONTRACT-->
+            <div class="modal fade" id="modal-container-227671" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">
+                                Connect to Jar
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                            <label>Contract Address</label>
+                            <input type="text" class="form-control" id="caddress" value="" />
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary" id="connect-btn">
+                                    Connect
+                                </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Close
+                                </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!---->
+
+        </div>
+        <div class="row" id="page2">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12 header">
+                        CryptoJar
+                        <div class="top-user-welcome"> Welcome , <span id="name"></span>
+                            <a id="modal-payFine" href="#modal-container-payFine" role="button" class="text-center bank-btn btn   small-btn" data-toggle="modal">Pay My Fines</a>
+                            <button id="log-out" class="text-center bank-btn btn  small-btn brown-btn ">logout</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 building wb">
+                        <div class="top-r ">
+                            <div class="float-left">
+                                <img alt="Bootstrap Image Preview " src="images/money-box.png">
+
+                            </div>
+                            <div class="text-center float-left account-text wb ">
+                                Jar Balance
+                                <div id="jarBalance" class="Balance wb">0 </div>
+                                <a id="modal-fines" href="#modal-container-fines" role="button" class="btn text-center btn wb  small-btn" data-toggle="modal">Fines</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 building">
+                        <div class="top-r ">
+                            <div class="float-left">
+                                <img alt="Bootstrap Image Preview " src="images/money-bag.png">
+
+                            </div>
+                            <div class="text-center float-left account-text ">
+                                Bank Balance
+                                <div id="bankBalance" class="Balance">0 </div>
+                                <a id="modal-withdrawals" href="#modal-container-withdrawals" role="button" class="text-center bank-btn btn  small-btn" data-toggle="modal">Withdrawals</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--User FINES-->
+            <div class="modal fade" id="modal-container-user-fines" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="userFinelLabel">
+                                User Details
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <img alt="Bootstrap Image Preview " id="large-avatar" class="full-width" src="images/avata.png">
+                                </div>
+                                <div class="col-4 user-info">
+                                    <div id="uname-large"> Bob Smith</div>
+                                    <div class="owns-nav">Owes
+                                        <div id="owns">10</div> SC
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row fine-nav">
+                                        <div class="col-6">
+                                            <input type="number" class="form-control fine-value" id="large-fineuser" min="1" value="1">
+                                            <input type="hidden" class="form-control " id="currentuser" value="">
+                                        </div>
+                                        <div class="col-6">
+                                            <button type="button" class="btn btn-primary " id="fine-user-btn">
+                                                Fine User
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!---->
+            <!--Add User-->
+            <div class="modal fade" id="modal-container-user-add" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">
+                                Add User
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                            <label>User's Name</label>
+                            <input type="text" class="form-control" id="uname" />
+                            <label>User's Public Address</label>
+                            <input type="text" class="form-control" id="uaddress" />
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary" id="addUser-btn">
+                                    Add User
+                                </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Close
+                                </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!---->
+            <!--FINES-->
+            <div class="modal fade" id="modal-container-fines" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog wide-modal" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">
+                                Fines
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="dispute-notice hidden alert alert-warning">You need to have atleast <span id="number-needed">0</span> users dispute a fine to confirm it </div>
+                            <table class="fines-table">
+                                <thead>
+                                    <td>User ID</td>
+                                    <td>Amount</td>
+                                    <td>Paid Off</td>
+                                    <td>Created By</td>
+
+                                    <td></td>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        Close
+                                    </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!---->
+
+            <!--Withdrawal -->
+            <div class="modal fade" id="modal-container-withdrawals" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog wide-modal" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">
+                                Withdrawals
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-body">
+                                <div class="withdrawal-notice hidden alert alert-warning">You need to have atleast <span id="w-number-needed">0</span> users verify a withdrawal for it to be transfered</div>
+
+                                <a id="modal-withdraw-funds" href="#modal-container-withdraw-funds" role="button" class="text-center add-user brown-btn  btn small-btn" data-toggle="modal">Withdraw Funds</a>
+
+                                <table class="withdrawal-table">
+                                    <thead>
+                                        <td>Amount</td>
+                                        <td>Reciever</td>
+                                        <td></td>
+                                        <td></td>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            Close
+                                        </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!---->
+
+            <!--Withdrawal -->
+            <div class="modal fade" id="modal-container-withdraw-funds" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">
+                                Withdraw Funds from bank
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-body">
+                                <label>Amount to withdraw (SC)</label>
+                                <input type="number" class="form-control" id="withdraw-amount" min="1" />
+                                <label>Pay to</label>
+                                <input type="text" class="form-control" id="withdraw-payto" placeholder="Account Address" />
+                                <button type="button" id="withdraw-btn" class="btn btn-primary" data-dismiss="modal">
+                                    Withdraw
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                Close
+                                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!---->
+
+            <!--PayFine-->
+            <div class="modal fade" id="modal-container-payFine" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">
+                                Pay out our fines
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-body pay-modal ">
+                                <div>You Owe <span id="current-owned">0</span> SC</div>
+                                <span id="current-owned-wei" class="hidden">0</span>
+                                <div>which is worth <span id="current-owned-either">0</span> Ethers($ <span id="current-owned-dol-val"></span>)</div>
+                                <button type="button" id="fines-pay" class="btn btn-primary" data-dismiss="modal">
+                                        Pay
+                                    </button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!---->
+            <div class="row">
+                <div class="col-md-12 header sub-header ">
+                    Users
+                    <a id="modal-add-user" href="#modal-container-user-add" role="button" class="text-center add-user brown-btn btn small-btn" data-toggle="modal">Add User</a>
+                </div>
+
+                <div class="col-md-12" id="blockchain">
+                    <div class="row avatars ">
+                        <div class="template">
+                            <div class="col-md-2" id="user">
+                                <a id="modal-user-fines" href="#modal-container-user-fines" role="button" class="user-btn" data-toggle="modal">
+                                    <img alt="Bootstrap Image Preview " src="images/avatar.png">
+                                    <div class="user-balance">0</div>
+                                    <div class="uid hidden"></div>
+                                    <div class="text-center  name"></div>
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="contract/bytecode.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
